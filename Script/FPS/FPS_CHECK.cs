@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,3 +28,34 @@ public class FPS_CHECK : MonoBehaviour // 모바일에서 프레임 확인 하�
 		GUI.Label(rect, text, style);
 	}
 }
+=======
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FPS_CHECK : MonoBehaviour // 모바일에서 프레임 확인 하기 위한 스크립트
+{
+	float deltaTime = 0.0f;
+
+	void Update()
+	{
+		deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+	}
+
+	void OnGUI()
+	{
+		int w = Screen.width, h = Screen.height;
+
+		GUIStyle style = new GUIStyle();
+
+		Rect rect = new Rect(0, 0, w, h * 2 / 100);
+		style.alignment = TextAnchor.UpperLeft;
+		style.fontSize = h * 2 / 100;
+		style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
+		float msec = deltaTime * 1000.0f;
+		float fps = 1.0f / deltaTime;
+		string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
+		GUI.Label(rect, text, style);
+	}
+}
+>>>>>>> 6c436f29386b55cbc0c7cc394c95d1e7d24ff50b
